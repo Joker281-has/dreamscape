@@ -7,6 +7,15 @@ jest.mock('expo', () => ({
   Constants: { expoVersion: '1.0.0' },
 }));
 
+// Explicitly mock Expo "winter" submodules that access runtime import-meta
+// This prevents Jest from executing native runtime checks in CI
+jest.mock('expo/src/winter/installGlobal', () => ({
+  installGlobal: () => {},
+  __ExpoImportMetaRegistry: {},
+}));
+
+jest.mock('expo/src/winter/runtime.native', () => ({}));
+
 
 // Mock expo-haptics
 jest.mock('expo-haptics', () => ({
