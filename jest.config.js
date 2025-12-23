@@ -24,10 +24,11 @@ module.exports = {
   // Updated after adding HomeScreen and RouteSelectionScreen tests
   coverageThreshold: {
     global: {
-      branches: 65,
-      functions: 65,
-      lines: 65,
-      statements: 65,
+      branches: 70,
+      functions: 75,
+      lines: 80,
+      statements: 80,
     },
   },
 };
+
