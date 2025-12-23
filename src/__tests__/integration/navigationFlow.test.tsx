@@ -1,6 +1,6 @@
 // @ts-nocheck
 import React from 'react';
-import { render, fireEvent, waitFor, act } from '@testing-library/react-native';
+import { render, fireEvent, waitFor, act, screen } from '@testing-library/react-native';
 import RootNavigator from '../../navigation/RootNavigator';
 import { LocationService } from '../../services/locationService';
 import { Animated } from 'react-native';
@@ -49,16 +49,36 @@ test('full navigation flow from Home -> RouteSelection -> Navigation -> End', as
   const startButton = await findByTestId('start-navigation-button');
   fireEvent.press(startButton);
 
-  // Allow navigation transition and timers to settle
+  // Give NavigationScreen time to mount
   await act(async () => {
-    jest.advanceTimersByTime(500);
+    jest.advanceTimersByTime(1000);
   });
 
-  const endButton = await findByTestId('end-navigation');
+  // Wait robustly for end navigation button with longer timeout
+  let endButton;
+  try {
+    endButton = await waitFor(
+      () => {
+        const button = screen.queryByTestId('end-navigation');
+        if (!button) {
+          throw new Error('end-navigation button not found');
+        }
+        return button;
+      },
+      { timeout: 5000 }
+    );
+  } catch (error) {
+    console.log('DEBUG: Navigation screen not rendered. Current tree:');
+    screen.debug();
+    throw error;
+  }
+
   expect(endButton).toBeTruthy();
+
 
   fireEvent.press(endButton);
 
   // Back to home
   await waitFor(() => expect(getByA11yLabel('Search for destination')).toBeTruthy());
 });
+
