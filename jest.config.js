@@ -9,6 +9,7 @@ module.exports = {
     '!src/**/*.d.ts',
     '!src/types/**',
   ],
+  setupFiles: ['<rootDir>/jest.setup.winter.js'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     '^expo$': '<rootDir>/__mocks__/expo.js',
