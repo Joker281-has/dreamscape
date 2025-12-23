@@ -121,7 +121,7 @@ describe('RouteSelectionScreen', () => {
   describe('Rendering', () => {
     it('renders the select route header', () => {
       const { getByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       expect(getByText('Select a route')).toBeTruthy();
@@ -129,7 +129,7 @@ describe('RouteSelectionScreen', () => {
 
     it('renders the destination information', () => {
       const { getByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       expect(getByText('To')).toBeTruthy();
@@ -138,7 +138,7 @@ describe('RouteSelectionScreen', () => {
 
     it('renders all three route options', async () => {
       const { getByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       await waitFor(() => {
@@ -150,7 +150,7 @@ describe('RouteSelectionScreen', () => {
 
     it('displays route duration for each option', async () => {
       const { getByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       await waitFor(() => {
@@ -208,7 +208,7 @@ describe('RouteSelectionScreen', () => {
 
     it('navigates back when back button pressed', () => {
       const { getByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       const backButton = getByText('Back');
@@ -276,7 +276,7 @@ describe('RouteSelectionScreen', () => {
   describe('Store Integration', () => {
     it('start navigation button is actionable', async () => {
       const { findByText, getByTestId } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
 
       // wait for loading to finish
@@ -353,7 +353,7 @@ describe('RouteSelectionScreen', () => {
 
       rerender(
         <NavigationContainer>
-          <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+          <RouteSelectionScreen />
         </NavigationContainer>
       );
 
