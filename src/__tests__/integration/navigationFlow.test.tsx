@@ -49,6 +49,11 @@ test('full navigation flow from Home -> RouteSelection -> Navigation -> End', as
   const startButton = await findByTestId('start-navigation-button');
   fireEvent.press(startButton);
 
+  // Allow navigation transition and timers to settle
+  await act(async () => {
+    jest.advanceTimersByTime(500);
+  });
+
   const endButton = await findByTestId('end-navigation');
   expect(endButton).toBeTruthy();
 
