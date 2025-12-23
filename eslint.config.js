@@ -2,7 +2,8 @@
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
-      parser: require.resolve('@typescript-eslint/parser'),
+      // Provide the parser module (must expose parse/parseForESLint)
+      parser: require('@typescript-eslint/parser'),
       parserOptions: {
         ecmaVersion: 2020,
         sourceType: 'module',
