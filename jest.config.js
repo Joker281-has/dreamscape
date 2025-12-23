@@ -21,12 +21,13 @@ module.exports = {
 
   // TODO: Increase thresholds as we add more tests
   // Target: branches 70, functions 75, lines 80, statements 80
+  // Updated after adding HomeScreen tests
   coverageThreshold: {
     global: {
-      branches: 25,
-      functions: 25,
-      lines: 25,
-      statements: 25,
+      branches: 35,
+      functions: 35,
+      lines: 35,
+      statements: 35,
     },
   },
 };
