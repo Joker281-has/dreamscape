@@ -31,7 +31,9 @@ afterEach(() => {
 });
 
 test('full navigation flow from Home -> RouteSelection -> Navigation -> End', async () => {
-  const { getByA11yLabel, findByTestId, queryByText } = render(<RootNavigator />);
+  const utils = render(<RootNavigator />);
+  const { findByTestId, queryByText, getByAccessibilityLabel, getByLabelText } = utils;
+  const getByA11yLabel = (label: string) => (getByAccessibilityLabel ? getByAccessibilityLabel(label) : getByLabelText(label));
 
   // Wait for Home loading to finish
   await waitFor(() => expect(queryByText('Getting your location...')).toBeNull());
