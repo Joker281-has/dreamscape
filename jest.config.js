@@ -12,6 +12,8 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
     '^expo$': '<rootDir>/__mocks__/expo.js',
+    '^expo/src/winter/installGlobal$': '<rootDir>/__mocks__/expo_winter.js',
+    '^expo/src/winter/runtime.native$': '<rootDir>/__mocks__/expo_winter.js',
     '^expo/src/winter/.*': '<rootDir>/__mocks__/expo_winter.js',
     '^react-native-worklets/plugin$': '<rootDir>/__mocks__/react-native-worklets-plugin.js',
   },
