@@ -15,4 +15,14 @@ module.exports = {
     '^expo/src/winter/.*': '<rootDir>/__mocks__/expo_winter.js',
     '^react-native-worklets/plugin$': '<rootDir>/__mocks__/react-native-worklets-plugin.js',
   },
+
+  // Coverage thresholds - tests will fail if coverage drops below these
+  coverageThreshold: {
+    global: {
+      branches: 70,
+      functions: 75,
+      lines: 80,
+      statements: 80,
+    },
+  },
 };
