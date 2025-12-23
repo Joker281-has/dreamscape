@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -162,7 +163,7 @@ describe('RouteSelectionScreen', () => {
 
     it('displays route distance for each option', async () => {
       const { getByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       await waitFor(() => {
@@ -174,7 +175,7 @@ describe('RouteSelectionScreen', () => {
 
     it('displays AI confidence for each route', async () => {
       const { getByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       await waitFor(() => {
@@ -186,7 +187,7 @@ describe('RouteSelectionScreen', () => {
 
     it('shows recommended badge on highest confidence route', async () => {
       const { getByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       await waitFor(() => {
@@ -200,7 +201,7 @@ describe('RouteSelectionScreen', () => {
   describe('Back Navigation', () => {
     it('renders back button', () => {
       const { getByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       expect(getByText('Back')).toBeTruthy();
@@ -219,7 +220,7 @@ describe('RouteSelectionScreen', () => {
 
     it('triggers haptic feedback on back button press', () => {
       const { getByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       const backButton = getByText('Back');
@@ -233,7 +234,7 @@ describe('RouteSelectionScreen', () => {
   describe('Route Selection', () => {
     it('navigates to navigation screen when route selected', async () => {
       const { findByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
 
       const fastest = await findByText('Fastest Route', {}, { timeout: 3000 });
@@ -248,7 +249,7 @@ describe('RouteSelectionScreen', () => {
 
     it('triggers haptic feedback when route selected', async () => {
       const { findByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
 
       const fastest = await findByText('Fastest Route', {}, { timeout: 3000 });
@@ -260,7 +261,7 @@ describe('RouteSelectionScreen', () => {
 
     it('selects different routes correctly', async () => {
       const { getByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       await waitFor(() => {
@@ -303,7 +304,7 @@ describe('RouteSelectionScreen', () => {
   describe('Accessibility', () => {
     it('back button has accessibility label', () => {
       const { getByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       const backText = getByText('Back');
@@ -313,7 +314,7 @@ describe('RouteSelectionScreen', () => {
 
     it('route cards are accessible', async () => {
       const { findByText } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       const fastest = await findByText('Fastest Route', {}, { timeout: 2000 });
@@ -335,7 +336,7 @@ describe('RouteSelectionScreen', () => {
       });
 
       const { queryByText, rerender } = renderWithNavigation(
-        <RouteSelectionScreen route={mockRoute} navigation={{} as any} />
+        <RouteSelectionScreen />
       );
       
       expect(queryByText('Fastest Route')).toBeNull();
