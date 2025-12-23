@@ -71,7 +71,7 @@ const RouteSelectionScreen: React.FC = () => {
             <RouteCard key={r.id} route={r} selected={r.id === selectedId} onPress={() => selectRoute(r)} />
           ))}
 
-          <TouchableOpacity style={styles.confirmButton} onPress={confirm} accessible={true} accessibilityRole="button" accessibilityLabel="Start navigation" accessibilityHint="Begin turn-by-turn navigation" hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
+          <TouchableOpacity testID="start-navigation-button" style={styles.confirmButton} onPress={confirm} accessible={true} accessibilityRole="button" accessibilityLabel="Start navigation" accessibilityHint="Begin turn-by-turn navigation" hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
             <Text style={styles.confirmText}>Start Navigation</Text>
           </TouchableOpacity>
         </ScrollView>
